@@ -1,0 +1,1 @@
+FROM docker.cnb.cool/yiqiu/dev:node

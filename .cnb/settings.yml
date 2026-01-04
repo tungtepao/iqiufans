@@ -1,0 +1,8 @@
+workspace:
+  launch:
+    button:
+      name: 好好学习
+      description: 天天向上
+    cpus: 8
+    disabled: false
+    autoOpenWebIDE: false

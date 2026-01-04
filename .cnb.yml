@@ -1,0 +1,30 @@
+$:
+  vscode:
+    - runner:
+        cpus: 8
+      docker:
+        build:
+          dockerfile: .ide/Dockerfile
+        volumes: 
+          - /pnpm-store:copy-on-write
+          - /node_modules:copy-on-write
+      services:
+        - vscode
+        - docker
+      imports: https://cnb.cool/yiqiu/dev.env/-/blob/main/github/tungtepao.yml
+      stages:
+        - name: vscode go
+          type: vscode:go
+
+"**":
+  web_trigger_one:
+    - stages:  
+      - name: push to github
+        imports: https://cnb.cool/yiqiu/dev.env/-/blob/main/github/tungtepao.yml
+        script: |
+          git config --unset user.name
+          git config --unset user.email
+          git config user.name ${GITHUB_USER}
+          git config user.email ${GITHUB_EMAIL}
+          git remote add github ${GITHUB_TAPD_IPTOOLS}
+          git push github main
