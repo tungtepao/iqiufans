@@ -1,0 +1,27 @@
+if hexo-config('css_prefix')
+  @import 'nib'
+
+@import '_third-party/normalize.min.css'
+// project
+@import 'var'
+@import '_global/*'
+@import '_highlight/highlight'
+@import '_page/*'
+@import '_layout/*'
+@import '_tags/*'
+@import '_mode/*'
+
+// search
+@import '_search/index'
+
+.aside-qrcode {
+    text-align: center;
+    padding-top: 4px
+}
+
+.aside-qrcode img {
+    max-width: 100%;
+    width: 200px;
+    height: 200px;
+    margin: 4px 4px -10px 4px
+}

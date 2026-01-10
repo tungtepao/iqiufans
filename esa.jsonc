@@ -1,0 +1,9 @@
+{
+  "name": "iqiufans",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm build",
+  "assets": {
+    "directory": "./public",
+    "notFoundStrategy": "404Page"
+  }
+}
