@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function reportPageView() {
   // 你的上报逻辑，例如向你的服务器发送一个POST请求
+  console.log('reportPageView 被调用了');
+  let newuser = isNewUser();
+  console.log("is new user:",newuser);
   const pageData = {
+    userId: getUserId(),
+    newuv: newuser,
     url: window.location.href,
     title: document.title,
     referrer: document.referrer,
@@ -32,9 +37,30 @@ async function fetchAndDisplayStats() {
     // 更新页面上的显示
     const pvElement = document.getElementById('esa-analytics-site-pv');
     const uvElement = document.getElementById('esa-analytics-site-uv');
-    if(pvElement) pvElement.textContent = `${stats.total}`;
-    if(uvElement) uvElement.textContent = `${stats.total}`;
+    if(pvElement) pvElement.textContent = `${stats.iqiufun_pv}`;
+    if(uvElement) uvElement.textContent = `${stats.iqiufun_uv}`;
   } catch (error) {
     console.error('Failed to fetch stats:', error);
   }
+}
+
+// 一个简单的工具函数，用于获取或生成用户唯一标识
+function getUserId() {
+    let userId = localStorage.getItem('iqiu_user_unique_id');
+    if (!userId) {
+        // 生成一个UUID作为用户标识
+        userId = 'user_' + Math.random().toString(36).substring(2, 16);
+        localStorage.setItem('iqiu_user_unique_id', userId);
+    }
+    return userId;
+}
+
+function isNewUser() {
+    let viewedDate = localStorage.getItem('iqiu_user_viewed_date');
+    if (!viewedDate) {
+        viewedDate = new Date().getTime();
+        localStorage.setItem('iqiu_user_viewed_date', viewedDate);
+        return true;
+    }
+    return new Date().getTime()>viewedDate+ 1000 * 60 * 30; // 简单规则：30分钟内不重复上报;
 }
