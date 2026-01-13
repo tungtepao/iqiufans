@@ -23,16 +23,17 @@ function reportPageView() {
 }
 
 async function fetchAndDisplayStats() {
+    console.log('fetchAndDisplayStats 被调用了');
   try {
     // 从你的统计后端API获取数据
     const response = await fetch('/api/stats/summary');
     const stats = await response.json();
-    
+    console.log(stats);
     // 更新页面上的显示
-    const pvElement = document.querySelector('#my-stats-container .site-pv');
-    const uvElement = document.querySelector('#my-stats-container .site-uv');
-    if(pvElement) pvElement.textContent = `总访问量: ${stats.totalPV}`;
-    if(uvElement) uvElement.textContent = `总访客数: ${stats.totalUV}`;
+    const pvElement = document.getElementById('esa-analytics-site-pv');
+    const uvElement = document.getElementById('esa-analytics-site-uv');
+    if(pvElement) pvElement.textContent = `${stats.total}`;
+    if(uvElement) uvElement.textContent = `${stats.total}`;
   } catch (error) {
     console.error('Failed to fetch stats:', error);
   }

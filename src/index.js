@@ -29,6 +29,11 @@ async function handleRequest(request) {
     let newValue = safeIncrement(value);
     await edgeKV.put("totalAccess", newValue, getType);
     return Response.json({ total: newValue ,oldtotal: value});
+  } else if (method === "GET" && path === "/api/stats/summary"){
+    const edgeKV = new EdgeKV({ namespace: "web" });// 命名空间是 web
+    let getType = { type: "text" };
+    let value = await edgeKV.get("totalAccess", getType);
+    return Response.json({ total: value });
   }
   return new Response(JSON.stringify({"hello": "world"}));
 }
