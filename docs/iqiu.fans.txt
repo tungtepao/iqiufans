@@ -1,0 +1,18 @@
+● 部署 URL：https://iqiu.fans
+● GitHub 仓库地址：https://github.com/tungtepao/iqiufans
+● 作品介绍：个人博客，搬迁中，装修中，先占个位子
+
+1.13日更新提交：
+一、创意和实用价值：
+    1、补全博客网站基本目录：分类、标签、about
+    2、添加背景音乐，使用网易云音乐自定义播放列表，hexo插件为hexo-tag-aplayer
+    3、相册功能，另开一个项目部署在ESA为主站提供图片：https://photo.iqiu.fans   github:https://github.com/tungtepao/piciqiufans
+    4、个性化修改：鼠标移动特效
+
+二、技术探索
+    1、替换jsdelivr为本地，解决网络访问异常
+    2、利用ESA函数实现访问统计，替代已经失效的插件busuanzi，自定义插件为esa_analytics：
+       A、利用ESA KV存储数据，服务端提供俩个参数：一个提供读取PV和UV，一个收集上报的访问信息
+       B、主动上报访问信息：随机一个userid和时间戳， 存储与localstorage，简单的逻辑是30分钟的访问计算PV，不计算UV
+       C、修改主题模板，添加ESA专属访问统计
+    更详细内容见github的readme和源码

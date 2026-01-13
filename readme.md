@@ -1,12 +1,19 @@
 # 神之一手
 
 
-## 通过云函数实现访问统计功能
+## 通过ESA云函数实现访问统计功能
+
+1. 云函数服务端：  
 
 src/index.js
 
+2. 主题汇报和获取数据：
+
 themes/butterfly/source/js/esa-analytics.js
 
+3. 主题配置修改： 
+
+3.1 修改主题配置文件  
 
 _config.butterfly.yml
 
@@ -27,6 +34,14 @@ esa_analytics:
   page_pv: true    
 
 ...
+```
+
+3.2 模板
+
+themes/butterfly/layout/includes/widgets/card_webinfo.pug
+
+```html
+略
 ```
 
 
