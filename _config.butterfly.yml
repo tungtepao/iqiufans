@@ -1063,6 +1063,7 @@ inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
+    - <script src="/js/esa-analytics.js"></script>
     # - <script src="xxxx"></script>
 
 # CDN Settings
