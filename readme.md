@@ -11,11 +11,22 @@ themes/butterfly/source/js/esa-analytics.js
 _config.butterfly.yml
 
 ```yaml
+...
+
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
     - <script src="/js/esa-analytics.js"></script>
+
+...
+
+esa_analytics:
+  site_uv: true
+  site_pv: true
+  page_pv: true    
+
+...
 ```
 
 

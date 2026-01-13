@@ -2,6 +2,7 @@
   "name": "iqiufans",
   "installCommand": "pnpm install",
   "buildCommand": "pnpm build",
+  "entry": "./src/index.js",
   "assets": {
     "directory": "./public",
     "notFoundStrategy": "404Page"
