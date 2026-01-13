@@ -69,6 +69,7 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
 meta_generator: true
@@ -102,3 +103,7 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+aplayer:
+  meting: true
+  asset_inject: false 

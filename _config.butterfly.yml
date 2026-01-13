@@ -19,6 +19,8 @@ nav:
 
 menu:
   首页: / || fas fa-home
+  音乐: /music/ || fas fa-music
+  图库: /gallery/ || fas fa-images
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
@@ -993,14 +995,14 @@ note:
 
 # https://github.com/MoOx/pjax
 pjax:
-  enable: false
+  enable: true
   # Exclude the specified pages from pjax, such as '/music/'
   exclude:
     # - /xxxxxx/
 
 # Inject the css and script (aplayer/meting)
 aplayerInject:
-  enable: false
+  enable: true
   per_page: true
 
 # Snackbar - Toast Notification
@@ -1069,7 +1071,10 @@ inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
+    - <canvas id="star-canvas"></canvas>
+    - <script src="/js/star-canvas.js"></script>
     - <script src="/js/esa-analytics.js"></script>
+    - <div class="aplayer no-destroy" data-id="17666492804" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" data-volume="0.5" muted></div>
     # - <script src="xxxx"></script>
 
 # CDN Settings
