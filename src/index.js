@@ -43,9 +43,37 @@ async function readStreamAsJson(request) {
     }
 }
 
+async function imagedemo(request){
+ return fetch(request, {
+        // 图像处理指令数组（支持多步骤操作）
+        image: [
+             {
+                action: 'resize',       // 动作类型：调整尺寸
+                option: {
+                    mode: 'custom',     // 模式：自定义参数（非cover/contain等预设模式）
+                    param: {
+                        p: 90,          // 图片质量（0-100，值越大质量越高）
+                        l: 1024,        // 固定宽度（单位：像素）
+                        // fh: 200      // 可选：固定高度（若设置会覆盖自动计算）
+                    },
+                },
+            },
+            {
+                action: 'format',       // 动作类型：格式转换
+                option: {
+                    param: {
+                        f: 'webp',       // 目标格式参数（png/jpeg/webp等）
+                    },
+                },
+            },
+        ],
+    });
+}
+
 async function handleRequest(request) {
     const url = new URL(request.url);
     const path = url.pathname;
+    const prefix = '/photo/';
     const method = request.method;
     const textType = { type: "text" };
     console.alert("Request received:", method, path);
@@ -78,6 +106,10 @@ async function handleRequest(request) {
         let iqiufun_pv = await edgeKV.get("iqiufun_pv", textType);
         let iqiufun_uv = await edgeKV.get("iqiufun_uv", textType);
         return Response.json({ iqiufun_pv: iqiufun_pv, iqiufun_uv: iqiufun_uv});
+    } else if (method === "GET" && path.startsWith(prefix)){
+
+    const newUrl = 'https://photo.iqiu.fans/'+path.replace(prefix, '/');
+    return imagedemo(new Request(newUrl, request)); 
     }
     return new Response(JSON.stringify({ "hello": "world" }));
 }
