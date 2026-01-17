@@ -66,7 +66,7 @@ async function imagedemo(request) {
                     },
                 },
             },
-            {
+/*             {
                 action: "waterMark",
                 option: {
                     mode: "text",
@@ -77,7 +77,7 @@ async function imagedemo(request) {
                         rotate: 100,
                     },
                 },
-            },
+            }, */
         ],
     });
 }

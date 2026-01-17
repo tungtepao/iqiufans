@@ -62,19 +62,19 @@ async function imagedemo(request) {
             // 目标格式参数（png/jpeg/webp等）
           }
         }
-      },
-      {
-        action: "waterMark",
-        option: {
-          mode: "text",
-          param: {
-            text: "UGhvdG8gRm9yIEVTQQ",
-            x: 10,
-            y: 10,
-            rotate: 100
-          }
-        }
       }
+      /*             {
+                      action: "waterMark",
+                      option: {
+                          mode: "text",
+                          param: {
+                              text: "UGhvdG8gRm9yIEVTQQ",
+                              x: 10,
+                              y: 10,
+                              rotate: 100,
+                          },
+                      },
+                  }, */
     ]
   });
 }
