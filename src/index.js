@@ -43,7 +43,7 @@ async function readStreamAsJson(request) {
     }
 }
 
-async function imagedemo(request) {    
+async function imagedemo(request) {
     return fetch(request, {
         // 图像处理指令数组（支持多步骤操作）
         image: [
@@ -66,18 +66,26 @@ async function imagedemo(request) {
                     },
                 },
             },
-/*             {
-                action: "waterMark",
+            {
+                action: "rotate",
                 option: {
-                    mode: "text",
+                    mode: "auto",
                     param: {
-                        text: "UGhvdG8gRm9yIEVTQQ",
-                        x: 10,
-                        y: 10,
-                        rotate: 100,
                     },
                 },
-            }, */
+            },
+            /*             {
+                            action: "waterMark",
+                            option: {
+                                mode: "text",
+                                param: {
+                                    text: "UGhvdG8gRm9yIEVTQQ",
+                                    x: 10,
+                                    y: 10,
+                                    rotate: 100,
+                                },
+                            },
+                        }, */
         ],
     });
 }

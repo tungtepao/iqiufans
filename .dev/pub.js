@@ -62,6 +62,13 @@ async function imagedemo(request) {
             // 目标格式参数（png/jpeg/webp等）
           }
         }
+      },
+      {
+        action: "rotate",
+        option: {
+          mode: "auto",
+          param: {}
+        }
       }
       /*             {
                       action: "waterMark",
