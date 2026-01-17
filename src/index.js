@@ -16,7 +16,7 @@ async function readStreamAsJson(request) {
     const stream = request.body;
     const reader = stream.getReader();
     const chunks = [];
-    
+
     try {
         while (true) {
             const { done, value } = await reader.read();
@@ -27,7 +27,7 @@ async function readStreamAsJson(request) {
         const allChunks = new Uint8Array(
             chunks.reduce((acc, chunk) => acc + chunk.length, 0)
         );
-        
+
         let position = 0;
         for (const chunk of chunks) {
             allChunks.set(chunk, position);
@@ -36,18 +36,18 @@ async function readStreamAsJson(request) {
 
         const text = new TextDecoder().decode(allChunks);
         return JSON.parse(text);
-        
+
     } finally {
         // 确保 reader 被释放
         reader.releaseLock();
     }
 }
 
-async function imagedemo(request){
- return fetch(request, {
+async function imagedemo(request) {    
+    return fetch(request, {
         // 图像处理指令数组（支持多步骤操作）
         image: [
-             {
+            {
                 action: 'resize',       // 动作类型：调整尺寸
                 option: {
                     mode: 'custom',     // 模式：自定义参数（非cover/contain等预设模式）
@@ -63,6 +63,18 @@ async function imagedemo(request){
                 option: {
                     param: {
                         f: 'webp',       // 目标格式参数（png/jpeg/webp等）
+                    },
+                },
+            },
+            {
+                action: "waterMark",
+                option: {
+                    mode: "text",
+                    param: {
+                        text: "UGhvdG8gRm9yIEVTQQ",
+                        x: 10,
+                        y: 10,
+                        rotate: 100,
                     },
                 },
             },
@@ -92,7 +104,7 @@ async function handleRequest(request) {
         // uv
         let iqiufun_uv = await edgeKV.get("iqiufun_uv", textType);
         console.alert("Request received newuv:", jsonData.newuv);
-        if (jsonData.newuv) {           
+        if (jsonData.newuv) {
             if (iqiufun_uv === undefined) {
                 iqiufun_uv = "1";
             } else {
@@ -100,16 +112,16 @@ async function handleRequest(request) {
             }
             await edgeKV.put("iqiufun_uv", iqiufun_uv, textType);
         }
-        return Response.json({ iqiufun_pv: iqiufun_pv, iqiufun_uv: iqiufun_uv});
+        return Response.json({ iqiufun_pv: iqiufun_pv, iqiufun_uv: iqiufun_uv });
     } else if (method === "GET" && path === "/api/stats/summary") {
         const edgeKV = new EdgeKV({ namespace: "web" });// 命名空间是 web
         let iqiufun_pv = await edgeKV.get("iqiufun_pv", textType);
         let iqiufun_uv = await edgeKV.get("iqiufun_uv", textType);
-        return Response.json({ iqiufun_pv: iqiufun_pv, iqiufun_uv: iqiufun_uv});
-    } else if (method === "GET" && path.startsWith(prefix)){
+        return Response.json({ iqiufun_pv: iqiufun_pv, iqiufun_uv: iqiufun_uv });
+    } else if (method === "GET" && path.startsWith(prefix)) {
 
-    const newUrl = 'https://photo.iqiu.fans/'+path.replace(prefix, '/');
-    return imagedemo(new Request(newUrl, request)); 
+        const newUrl = 'https://photo.iqiu.fans/' + path.replace(prefix, '/');
+        return imagedemo(new Request(newUrl, request));
     }
     return new Response(JSON.stringify({ "hello": "world" }));
 }

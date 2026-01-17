@@ -924,7 +924,7 @@ clickShowText:
 # https://github.com/francoischalifour/medium-zoom
 # https://fancyapps.com/fancybox/
 # Leave it empty if you don't need lightbox
-lightbox:
+lightbox: fancybox
 
 # --------------------------------------
 # Tag Plugins settings
@@ -1143,7 +1143,7 @@ CDN:
     # snackbar:
     # snackbar_css:
     # translate:
-    # twikoo:
+    twikoo: https://cdn.iqiu.fans/twikoo.min.js
     # typed:
     # utils:
     # valine:
