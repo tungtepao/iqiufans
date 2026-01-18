@@ -2,6 +2,24 @@
 ● GitHub 仓库地址：https://github.com/tungtepao/iqiufans
 ● 作品介绍：个人博客，搬迁中，装修中，先占个位子
 
+1.18日更新提交：
+一、创意和实用价值：
+    1、添加了评论功能，使用评论插件twikoo（自己魔改支持ESA版本，详细见技术探索部分）
+    2、添加fancybox插件，使得图片的查看更加优雅
+    3、图库功能增强：使用ESA函数完成图片的压缩、转换和旋转处理
+        A、原来的图片存储ESA站点不变：https://photo.iqiu.fans   github:https://github.com/tungtepao/piciqiufans
+        B、不在直接使用图片站点，而是接入主站的函数路由，进行压缩、转换、旋转处理，以增强网站加载速度和保护原图的地址及知识产权。
+        C、详细实现见主站代码，并且还写成了博文发在本次主站：[使用ESA函数完成图片格式转换和压缩] https://iqiu.fans/2026/01/16/esaforjpg/
+二、技术探索
+    1、ESA图片处理的探索：压缩、转换、旋转处理成功（2000w像素文件过大转换失败、文字水印加载失败）
+    2、以ESA函数为功能，以KV为数据存储，实现了将评论插件twikoo在ESA上的部署：
+       A、以itty-router开源为路由管理，以KV为数据存储，完全从零开始复刻wikoo的esa版本： https://github.com/tungtepao/twikoo-api-for-esa
+       B、魔改twikoo前端代码，部分刷新更新评论列表，即降低后端接口压力，也避免了KV存储延时导致了最新评论无法更新出现的问题 ：https://github.com/tungtepao/twikoo-client-for-esa
+       C、在twikoo前端，集成AI验证码功能，前端测试完成，尚未完成与阿里云接口的联调
+       D、更详细的见源码，这一块设计与想法，也写成了博文： [让ESA函数和KV存储为Twikoo评论系统服务] https://iqiu.fans/2026/01/18/esafortwikoo/
+    3、补充：
+       为了便于开发调试，新建了一个新的pages，用作cdn，存储twikoo编译后的前端js代码：https://cdn.iqiu.fans/twikoo.min.js
+
 1.13日更新提交：
 一、创意和实用价值：
     1、补全博客网站基本目录：分类、标签、about
@@ -17,7 +35,3 @@
        C、修改主题模板，添加ESA专属访问统计
     更详细内容见github的readme和源码
 
-1.19日更新提交：
-相册完善： 完成集合页和子页面，完成图片自动转换，web
-
-修改twikoo前端，延时更新评论，解决评论刷新问题

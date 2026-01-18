@@ -120,7 +120,7 @@ async function handleRequest(request) {
     let iqiufun_uv = await edgeKV.get("iqiufun_uv", textType);
     return Response.json({ iqiufun_pv, iqiufun_uv });
   } else if (method === "GET" && path.startsWith(prefix)) {
-    const newUrl = "https://photo.iqiu.fans/" + path.replace(prefix, "/");
+    const newUrl = "https://photo.iqiu.fans" + path.replace(prefix, "/");
     return imagedemo(new Request(newUrl, request));
   }
   return new Response(JSON.stringify({ "hello": "world" }));

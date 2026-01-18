@@ -1,10 +1,10 @@
 ---
 title: '使用ESA函数完成图片格式转换和压缩'
-date: '2025-05-01'
+date: '2026-01-16'
 tags: ['ESA']
 draft: false
 summary: 使用ESA函数完成图片格式转换和压缩,自动旋转图片
-cover: images/blog/01/1.jpg
+cover: images/blog/03/1.svg
 ---
 
 ## 简介
